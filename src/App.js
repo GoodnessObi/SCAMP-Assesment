@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import Navbar from './components/layout/Navbar';
 
-function App() {
-	return (
-		<div className='App'>
-			<h1>Hello</h1>
-		</div>
-	);
+class App extends Component {
+	render() {
+		return <Navbar title='Covid-19 Tracker' />;
+	}
 }
 
 export default App;
