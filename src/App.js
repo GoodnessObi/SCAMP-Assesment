@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './components/layout/Navbar';
-import GlobalData from './components/layout/GlobalData';
-import Countries from './components/layout/Countries';
+import GlobalData from './components/global/GlobalData';
+import CountryData from './components/country/CountryData';
 import axios from 'axios';
+import Search from './components/country/Search';
 
 class App extends Component {
 	state = {
 		global: {},
 		countries: [],
+		country: [],
 		loading: false,
 	};
 	async componentDidMount() {
@@ -20,26 +22,43 @@ class App extends Component {
 			countries: result.data.Countries,
 			loading: false,
 		});
-		console.log(result.data.Global);
+		// console.log(result.data.Global);
 
-		console.log(result.data.Countries);
+		// console.log(
+		// 	result.data.Countries.filter((country) => {
+		// 		return country.Country === 'Nigeria';
+		// 	})
+		// );
 	}
+
+	//search country
+	searchCountry = (text) => {
+		const searchResult = this.state.countries.filter(
+			(country) =>
+				country.Country.toLowerCase() === `${text.toLowerCase().trim()}`
+		);
+		if (searchResult.length < 1) {
+			console.log('error');
+		} else {
+			this.setState({ country: searchResult[0] });
+		}
+		// console.log(searchResult);
+	};
 
 	render() {
 		return (
 			<div>
 				<Navbar title='Covid-19 Tracker' />
 				<div className='container'>
+					<Search searchCountry={this.searchCountry} />
 					<div className='row'>
 						<GlobalData
 							loading={this.state.loading}
 							global={this.state.global}
 						/>
-					</div>
-					<div className='row'>
-						<Countries
+						<CountryData
 							loading={this.state.loading}
-							countries={this.state.countries}
+							country={this.state.country}
 						/>
 					</div>
 				</div>
