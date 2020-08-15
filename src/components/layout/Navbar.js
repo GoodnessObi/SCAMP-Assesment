@@ -6,7 +6,7 @@ import logo from '../../assets/images/icons8-coronavirus-64.png';
 const Navbar = ({ title }) => {
 	return (
 		<div>
-			<nav className='navbar navbar-expand-lg navbar-custom bg-light'>
+			<nav className='navbar  navbar-custom'>
 				<div className='container'>
 					<div className='navbar-brand'>
 						<img src={logo} alt='' style={{ width: '50px', height: '50px' }} />

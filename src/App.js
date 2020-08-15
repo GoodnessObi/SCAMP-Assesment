@@ -40,7 +40,7 @@ class App extends Component {
 				country.Country.toLowerCase() === `${text.toLowerCase().trim()}`
 		);
 		if (searchResult.length < 1) {
-			this.setAlert('Please enter a Country name', 'danger');
+			this.setAlert('Please enter a Country name!');
 		} else {
 			this.setState({ country: searchResult[0] });
 		}
@@ -49,7 +49,7 @@ class App extends Component {
 
 	//set alert
 	setAlert = (msg, type) => {
-		this.setState({ alert: { msg, type } });
+		this.setState({ alert: { msg } });
 		setTimeout(() => this.setState({ alert: null }), 3000);
 	};
 
@@ -57,21 +57,24 @@ class App extends Component {
 		return (
 			<div>
 				<Navbar title='Covid-19 Tracker' />
-				<div className='container'>
-					<div className='row justify-content-center'>
-						<Alert alert={this.state.alert} />
-						<Search searchCountry={this.searchCountry} />
-					</div>
-
-					<div className='row'>
-						<GlobalData
-							loading={this.state.loading}
-							global={this.state.global}
-						/>
-						<CountryData
-							loading={this.state.loading}
-							country={this.state.country}
-						/>
+				<div className='main pt-2'>
+					<div className='container'>
+						<div className='row justify-content-center'>
+							<div className='col-md-6'>
+								<Alert alert={this.state.alert} />
+								<Search searchCountry={this.searchCountry} />
+							</div>
+						</div>
+						<div className='row'>
+							<GlobalData
+								loading={this.state.loading}
+								global={this.state.global}
+							/>
+							<CountryData
+								loading={this.state.loading}
+								country={this.state.country}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

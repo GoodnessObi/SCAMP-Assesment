@@ -18,21 +18,21 @@ class Search extends Component {
 
 	render() {
 		return (
-			<div className='col-12 text-center'>
+			<div className='col-12 text-center mb-0'>
 				<form onSubmit={this.onSubmit}>
 					<div className='form-row'>
-						<div className='form-group col-md-6'>
+						<div className='form-group w-100'>
 							<input
 								type='text'
-								className='form-control'
+								className='form-control w-100'
 								name='text'
 								value={this.state.text}
-								placeholder='Search Country'
+								placeholder='Search Country . . .'
 								onChange={this.onChange}
 							/>
 						</div>
 					</div>
-					<div className='form-group col-md-6'>
+					<div className='form-group '>
 						<input
 							type='submit'
 							className='btn btn-success w-100'

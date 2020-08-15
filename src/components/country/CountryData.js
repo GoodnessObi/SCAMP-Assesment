@@ -1,8 +1,9 @@
 import React from 'react';
-import Spinner from '../layout/Spinner';
+import image from '../../assets/images/icons8-coronavirus-64.png';
+// import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 
-const CountryData = ({ country, loading }) => {
+const CountryData = ({ country }) => {
 	const {
 		Country,
 		NewConfirmed,
@@ -12,34 +13,54 @@ const CountryData = ({ country, loading }) => {
 		NewRecovered,
 		TotalRecovered,
 	} = country;
-	if (loading) {
-		return <Spinner />;
+
+	if ((country = '')) {
+		return (
+			<div>
+				<img src={image} alt='' />
+			</div>
+		);
 	} else {
 		return (
-			<div className='col-md-6 border rounded-lg mt-5'>
-				<h2>{Country}</h2>
-				<ul>
-					<li>
-						Total Number of cases: <span> {TotalConfirmed} </span>
-					</li>
-					<li>
-						Total Number of Recoveries: <span> {TotalRecovered} </span>
-					</li>
-					<li>
-						Total Number of Deaths: <span> {TotalDeaths} </span>
-					</li>
-					<li>
-						Number of New cases <br /> (last 24 hours) :
-						<span>{NewConfirmed} </span>
-					</li>
-					<li>
-						Number of Deaths <br /> (last 24 hours) : <span>{NewDeaths} </span>
-					</li>
-					<li>
-						Number of Recovered <br /> (last 24 hours) :
-						<span>{NewRecovered} </span>
-					</li>
-				</ul>
+			<div className='col-md-6 text-center'>
+				<h4>{Country}</h4>
+				<div class='alert alert-custom' role='alert'>
+					<span className='badge badge-custom case-title'>
+						Total Number of cases{' '}
+					</span>
+					<br /> {TotalConfirmed}
+				</div>
+				<div class='alert alert-custom' role='alert'>
+					<span className='badge badge-custom case-title'>
+						Total Number of Recoveries{' '}
+					</span>
+					<br /> {TotalRecovered}
+				</div>
+				<div class='alert alert-custom' role='alert'>
+					<span className=' badge badge-custom case-title'>
+						Total Number of Deaths{' '}
+					</span>
+					<br /> {TotalDeaths}
+				</div>
+				<div class='alert alert-custom' role='alert'>
+					<span className='badge badge-custom case-title'>
+						Number of New cases <br /> last 24 hours
+					</span>
+					<br /> {NewConfirmed}
+				</div>
+				<div class='alert alert-custom' role='alert'>
+					<span className='badge badge-custom case-title'>
+						Number of Deaths
+						<br /> last 24 hours
+					</span>
+					<br /> {NewDeaths}
+				</div>
+				<div class='alert alert-custom' role='alert'>
+					<span className='badge badge-custom case-title'>
+						Number of Recovered <br /> last 24 hours
+					</span>
+					<br /> {NewRecovered}
+				</div>
 			</div>
 		);
 	}

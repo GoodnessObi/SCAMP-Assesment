@@ -1,6 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Poppins&display=swap');
 .navbar-custom {
-	background-color: #c8cfd6;
-	color: #26191b;
+	background-color: #9ea2a5;
+	font-family: 'Alata', sans-serif;
+	color: #902fc9;
 }
 
-/* #919eab */
+.main {
+	background-color: #f5f8fa;
+	font-family: 'Poppins', sans-serif;
+	min-height: 100vh;
+}
+
+.alert-warning {
+	color: red;
+}
+
+.badge-success {
+	background-color: #21b389;
+	font-size: 1rem;
+	font-family: 'Alata', sans-serif;
+	font-weight: normal;
+	color: black;
+}
+
+.btn-success {
+	background-color: #21b389;
+	color: black;
+}
+
+.btn-success:visited,
+.btn-success:hover,
+.btn-success:active,
+.btn-success:focus {
+	background-color: #157459;
+	color: black;
+}
+
+h4 {
+	font-family: 'Alata', sans-serif;
+}
+
+.alert-custom {
+	background-color: #c2bcd6;
+}
+.badge-custom {
+	background-color: #877ea2;
+	font-size: 1rem;
+	font-family: 'Alata', sans-serif;
+	font-weight: normal;
+	color: black;
+}
+
+/*  */
