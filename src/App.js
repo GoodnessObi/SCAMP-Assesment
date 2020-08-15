@@ -11,7 +11,7 @@ class App extends Component {
 	state = {
 		global: {},
 		countries: [],
-		country: [],
+		country: {},
 		loading: false,
 		alert: null,
 	};
@@ -24,13 +24,15 @@ class App extends Component {
 			countries: result.data.Countries,
 			loading: false,
 		});
-		// console.log(result.data.Global);
 
-		// console.log(
-		// 	result.data.Countries.filter((country) => {
-		// 		return country.Country === 'Nigeria';
-		// 	})
-		// );
+		//autocomplete
+		// $('.basicAutoComplete').autoComplete({
+		// 	resolverSettings: {
+		// 		// url: this.state.countries.map((countryLog) => countryLog.Country),
+		// 		url: 'testdata/test-list.json',
+		// 	},
+		// });
+		// console.log(window.$);
 	}
 
 	//search country
@@ -40,7 +42,7 @@ class App extends Component {
 				country.Country.toLowerCase() === `${text.toLowerCase().trim()}`
 		);
 		if (searchResult.length < 1) {
-			this.setAlert('Please enter a Country name!');
+			this.setAlert('Please enter a valid Country name!');
 		} else {
 			this.setState({ country: searchResult[0] });
 		}
@@ -65,15 +67,12 @@ class App extends Component {
 								<Search searchCountry={this.searchCountry} />
 							</div>
 						</div>
-						<div className='row'>
+						<div className='row justify-content-center'>
 							<GlobalData
 								loading={this.state.loading}
 								global={this.state.global}
 							/>
-							<CountryData
-								loading={this.state.loading}
-								country={this.state.country}
-							/>
+							<CountryData country={this.state.country} />
 						</div>
 					</div>
 				</div>

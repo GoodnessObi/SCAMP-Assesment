@@ -24,7 +24,7 @@ class Search extends Component {
 						<div className='form-group w-100'>
 							<input
 								type='text'
-								className='form-control w-100'
+								className='basicAutoComplete form-control w-100'
 								name='text'
 								value={this.state.text}
 								placeholder='Search Country . . .'
