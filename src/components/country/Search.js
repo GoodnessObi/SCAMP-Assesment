@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class Search extends Component {
 	state = {
@@ -18,7 +18,7 @@ class Search extends Component {
 
 	render() {
 		return (
-			<Fragment>
+			<div className='col-12 text-center'>
 				<form onSubmit={this.onSubmit}>
 					<div className='form-row'>
 						<div className='form-group col-md-6'>
@@ -33,10 +33,14 @@ class Search extends Component {
 						</div>
 					</div>
 					<div className='form-group col-md-6'>
-						<input type='submit' className='btn btn-success' value='Search' />
+						<input
+							type='submit'
+							className='btn btn-success w-100'
+							value='Search'
+						/>
 					</div>
 				</form>
-			</Fragment>
+			</div>
 		);
 	}
 }

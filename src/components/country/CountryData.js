@@ -16,7 +16,7 @@ const CountryData = ({ country, loading }) => {
 		return <Spinner />;
 	} else {
 		return (
-			<div className='col-6 border rounded-lg mt-5'>
+			<div className='col-md-6 border rounded-lg mt-5'>
 				<h2>{Country}</h2>
 				<ul>
 					<li>

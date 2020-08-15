@@ -5,6 +5,7 @@ import GlobalData from './components/global/GlobalData';
 import CountryData from './components/country/CountryData';
 import axios from 'axios';
 import Search from './components/country/Search';
+import Alert from './components/layout/Alert';
 
 class App extends Component {
 	state = {
@@ -12,6 +13,7 @@ class App extends Component {
 		countries: [],
 		country: [],
 		loading: false,
+		alert: null,
 	};
 	async componentDidMount() {
 		this.setState({ loading: true });
@@ -38,11 +40,17 @@ class App extends Component {
 				country.Country.toLowerCase() === `${text.toLowerCase().trim()}`
 		);
 		if (searchResult.length < 1) {
-			console.log('error');
+			this.setAlert('Please enter a Country name', 'danger');
 		} else {
 			this.setState({ country: searchResult[0] });
 		}
 		// console.log(searchResult);
+	};
+
+	//set alert
+	setAlert = (msg, type) => {
+		this.setState({ alert: { msg, type } });
+		setTimeout(() => this.setState({ alert: null }), 3000);
 	};
 
 	render() {
@@ -50,7 +58,11 @@ class App extends Component {
 			<div>
 				<Navbar title='Covid-19 Tracker' />
 				<div className='container'>
-					<Search searchCountry={this.searchCountry} />
+					<div className='row justify-content-center'>
+						<Alert alert={this.state.alert} />
+						<Search searchCountry={this.searchCountry} />
+					</div>
+
 					<div className='row'>
 						<GlobalData
 							loading={this.state.loading}
