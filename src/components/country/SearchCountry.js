@@ -30,6 +30,7 @@ class SearchCountry extends Component {
 								escapeClearsValue={true}
 								// onInputChange={this.onChange}
 								options={this.props.countries}
+								placeholder='Search for a country . . .'
 							/>
 						</div>
 					</div>
