@@ -12,19 +12,7 @@ const CountryData = ({ country }) => {
 		NewRecovered,
 		TotalRecovered,
 	} = country;
-	// console.log(country);
-	// if ((country = {})) {
-	// 	console.log(country);
-	// 	return (
-	// 		<div className='col-md-6 text-center'>
-	// 			<img
-	// 				src={image}
-	// 				alt=''
-	// 				style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-	// 			/>
-	// 		</div>
-	// 	);
-	// } else {
+
 	return (
 		<div
 			className={`col-md-6 text-center ${

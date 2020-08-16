@@ -4,7 +4,7 @@ import Navbar from './components/layout/Navbar';
 import GlobalData from './components/global/GlobalData';
 import CountryData from './components/country/CountryData';
 import axios from 'axios';
-import Search from './components/country/Search';
+import SearchCountry from './components/country/SearchCountry';
 import Alert from './components/layout/Alert';
 
 class App extends Component {
@@ -14,6 +14,7 @@ class App extends Component {
 		country: {},
 		loading: false,
 		alert: null,
+		countryList: [],
 	};
 	async componentDidMount() {
 		this.setState({ loading: true });
@@ -23,17 +24,17 @@ class App extends Component {
 			global: result.data.Global,
 			countries: result.data.Countries,
 			loading: false,
+			countryList: this.transformCountries(result.data.Countries),
 		});
-
-		//autocomplete
-		// $('.basicAutoComplete').autoComplete({
-		// 	resolverSettings: {
-		// 		// url: this.state.countries.map((countryLog) => countryLog.Country),
-		// 		url: 'testdata/test-list.json',
-		// 	},
-		// });
-		// console.log(window.$);
 	}
+
+	transformCountries = (countryArray) => {
+		return countryArray.map((country, index) => ({
+			id: index,
+			value: country.Country,
+			...country,
+		}));
+	};
 
 	//search country
 	searchCountry = (text) => {
@@ -64,7 +65,10 @@ class App extends Component {
 						<div className='row justify-content-center'>
 							<div className='col-md-6'>
 								<Alert alert={this.state.alert} />
-								<Search searchCountry={this.searchCountry} />
+								<SearchCountry
+									searchCountry={this.searchCountry}
+									countries={this.state.countryList}
+								/>
 							</div>
 						</div>
 						<div className='row justify-content-center'>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Search from 'react-search';
 
-class Search extends Component {
+class SearchCountry extends Component {
 	state = {
 		text: '',
 	};
@@ -12,8 +13,10 @@ class Search extends Component {
 	};
 
 	onChange = (e) => {
-		// this.setState({ text: e.target.value });
-		this.setState({ [e.target.name]: e.target.value });
+		if (e[0]) {
+			console.log(e[0].value);
+			this.setState({ text: e[0].value });
+		}
 	};
 
 	render() {
@@ -22,13 +25,12 @@ class Search extends Component {
 				<form onSubmit={this.onSubmit}>
 					<div className='form-row'>
 						<div className='form-group w-100'>
-							<input
-								type='text'
-								className='basicAutoComplete form-control w-100'
-								name='text'
-								value={this.state.text}
+							<Search
+								items={this.props.countries}
 								placeholder='Search Country . . .'
-								onChange={this.onChange}
+								maxSelected={1}
+								multiple={false}
+								onItemsChanged={(e) => this.onChange(e)}
 							/>
 						</div>
 					</div>
@@ -45,4 +47,4 @@ class Search extends Component {
 	}
 }
 
-export default Search;
+export default SearchCountry;
