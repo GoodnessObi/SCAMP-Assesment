@@ -15,7 +15,7 @@ const CountryData = ({ country }) => {
 
 	return (
 		<div
-			className={`col-md-6 text-center ${
+			className={`col-md-6 text-center order-1 order-md-2 border mt-2 mb-1 py-1 ${
 				Object.keys(country).length === 0 ? 'hide' : ''
 			}`}>
 			<h4>{Country}</h4>

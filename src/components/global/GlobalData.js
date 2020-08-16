@@ -14,7 +14,7 @@ const GlobalData = ({ global, loading }) => {
 		return <Spinner />;
 	} else {
 		return (
-			<div className='col-md-6 text-center'>
+			<div className='col-md-6 text-center order-2 order-md-1 border mt-2 mb-1 py-2'>
 				<h4>Global Data</h4>
 				<div className='alert alert-success' role='alert'>
 					<span className='badge badge-success case-title'>
