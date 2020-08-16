@@ -31,8 +31,8 @@ class App extends Component {
 	transformCountries = (countryArray) => {
 		return countryArray.map((country, index) => ({
 			id: index,
+			label: country.Country,
 			value: country.Country,
-			...country,
 		}));
 	};
 

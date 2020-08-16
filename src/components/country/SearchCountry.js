@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Search from 'react-search';
+import Select from 'react-select';
 
 class SearchCountry extends Component {
 	state = {
@@ -13,9 +13,8 @@ class SearchCountry extends Component {
 	};
 
 	onChange = (e) => {
-		if (e[0]) {
-			console.log(e[0].value);
-			this.setState({ text: e[0].value });
+		if (e) {
+			this.setState({ text: e.value });
 		}
 	};
 
@@ -25,12 +24,12 @@ class SearchCountry extends Component {
 				<form onSubmit={this.onSubmit}>
 					<div className='form-row'>
 						<div className='form-group w-100'>
-							<Search
-								items={this.props.countries}
-								placeholder='Search Country . . .'
-								maxSelected={1}
-								multiple={false}
-								onItemsChanged={(e) => this.onChange(e)}
+							<Select
+								isClearable
+								onChange={this.onChange}
+								escapeClearsValue={true}
+								// onInputChange={this.onChange}
+								options={this.props.countries}
 							/>
 						</div>
 					</div>
